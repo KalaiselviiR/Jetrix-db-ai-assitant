@@ -1,16 +1,15 @@
+require("dotenv").config();
 const mysql = require("mysql2/promise");
 const { MongoClient } = require("mongodb");
 
 // 🔹 Replace these with your actual credentials
 const MYSQL_CONFIG = {
-  host: "localhost",
-  user: "root",
-  password: "srivani@19",
-  database: "company_db",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 };
-
-const MONGO_URI =
-  "mongodb+srv://srivani:srivani@cluster0.b6vvhau.mongodb.net/?retryWrites=true&w=majority";
+const MONGO_URI = process.env.MONGO_URI;
 const MONGO_DB = "ai_assistant";
 const MONGO_COLLECTION = "schema_metadata";
 

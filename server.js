@@ -1,19 +1,13 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const neo4j = require("neo4j-driver");
 const { askGemini } = require("./gemini");
+// Reuse the shared Neo4j driver (credentials come from .env via neo4j.js)
+const { driver } = require("./neo4j");
 
 const app = express();
 app.use(bodyParser.json());
 app.use(express.static("public"));
-
-// Neo4j driver setup
-const driver = neo4j.driver(
-  "neo4j+s://2ab7210c.databases.neo4j.io",
-  neo4j.auth.basic("neo4j", "pD4qvZyDPdozsCZnTek5J-R16FoOPr5GFYq5CRaOb44")
-);
-
-const session = driver.session();
 
 app.post("/api/ask", async (req, res) => {
   const session = driver.session();
