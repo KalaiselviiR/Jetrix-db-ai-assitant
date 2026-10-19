@@ -9,7 +9,8 @@ const MYSQL_CONFIG = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
 };
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI =
+  "mongodb+srv://srivani:srivani@cluster0.b6vvhau.mongodb.net/?retryWrites=true&w=majority";
 const MONGO_DB = "ai_assistant";
 const MONGO_COLLECTION = "schema_metadata";
 
